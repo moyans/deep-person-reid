@@ -10,7 +10,7 @@ data:
   width: 128
   combineall: False
   transforms: ['random_flip']
-  save_dir: 'log/reid_r50fc512_softmax_256x128_amsgrad'
+  save_dir: 'log/reid_se_resnext101_32x4d_softmax_256x128_amsgrad'
 
 loss:
   name: 'softmax'
