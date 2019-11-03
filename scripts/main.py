@@ -1,5 +1,5 @@
 import sys
-import os
+import os   
 import os.path as osp
 import time
 import argparse
@@ -132,7 +132,7 @@ def main():
     )
     num_params, flops = compute_model_complexity(model, (1, 3, cfg.data.height, cfg.data.width))
     print('Model complexity: params={:,} flops={:,}'.format(num_params, flops))
-
+    
     if cfg.model.load_weights and check_isfile(cfg.model.load_weights):
         load_pretrained_weights(model, cfg.model.load_weights)
     
@@ -152,3 +152,15 @@ def main():
 
 if __name__ == '__main__':
     main()
+
+'''
+python scripts/main.py \
+--config-file configs/im_osnet_x1_0_softmax_256x128_amsgrad_cosine.yaml \
+--transforms random_flip random_erase \
+--root $PATH_TO_DATA \
+--gpu-devices 0
+
+
+python scripts/main.py --config-file configs/reid_osnet_x1_0_softmax_256x128_amsgrad_cosine.yaml --transforms random_flip random_erase --root /data/Data/reID/re --gpu-device 0
+python scripts/main.py --config-file configs/reid_osnet_ain_x1_0_softmax_256x128_amsgrad_cosine.yaml --transforms random_flip random_erase --root /data/Data/reID/re --gpu-device 0
+'''

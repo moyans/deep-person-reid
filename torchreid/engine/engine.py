@@ -109,10 +109,15 @@ class Engine(object):
 
         time_start = time.time()
         print('=> Start training')
+        eval_freq=50
 
         for epoch in range(start_epoch, max_epoch):
             self.train(epoch, max_epoch, trainloader, fixbase_epoch, open_layers, print_freq)
-            
+            print("====> moyan debug <=======")
+            print("start_eval:,", start_eval)
+            print("eval_freq:,", eval_freq)
+            # print("start_eval:,", start_eval)
+
             if (epoch+1)>=start_eval and eval_freq>0 and (epoch+1)%eval_freq==0 and (epoch+1)!=max_epoch:
                 rank1 = self.test(
                     epoch,
